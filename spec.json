@@ -1,0 +1,51 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Showcase UI Bugs",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/url": {
+      "post": {
+        "tags": [
+          "Tag"
+        ],
+        "requestBody": {
+          "description": "Json-encoded object.",
+          "required": true,
+          "content": {
+            "application\/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "callbacks": {
+          "myWebhook": {
+            "$request.body#/url": {
+              "post": {
+                "requestBody": {
+                  "description": "Json-encoded object.",
+                  "required": true,
+                  "content": {
+                    "application\/json": {
+                      "schema": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
